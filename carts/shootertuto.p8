@@ -1,6 +1,7 @@
 pico-8 cartridge // http://www.pico-8.com
 version 42
 __lua__
+--main
 function _init()
 	p={x=60,y=90,speed=4}
 	arrows={}
@@ -17,6 +18,12 @@ function _update60()
 end
 
 function _draw()
+	cls(3)
+	--ground
+	for g in all(ground) do
+		--pset(g.x,g.y,g.col)
+		spr(g.s,g.x,g.y)
+	end
 	--hero
 	spr(1,p.x,p.y)
 	--arrows
@@ -43,22 +50,19 @@ function update_arrows()
 	end
 end
 -->8
--- ground
+--ground
 
 function create_ground()
 	ground={}
-	for i=0,127 do
-		for j=0,127 do
-			tile={
-				x=i,
-				y=j,
+	for i=0,15 do
+		for j=0,15 do
+			new_tile={
+				x=8*i,
+				y=8*j,
 				s=rnd(9)+16
 			}
-			add(ground,tile)
+			add(ground,new_tile)
 		end
-	end
-	for g in all(ground) do
-		spr(32,g.x,g.y)
 	end
 end
 __gfx__
