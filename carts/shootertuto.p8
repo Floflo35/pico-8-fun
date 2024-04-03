@@ -8,10 +8,6 @@ function _init()
 	create_ground()
 end
 
-function _update()
-	anim_ground()
-end
-
 function _update60()
 	if (btn(➡️)) p.x+=1
 	if (btn(⬅️)) p.x-=1
